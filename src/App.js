@@ -44,7 +44,13 @@ function App() {
           <AddIcon />
         </StyledFab>
         {boxes.map((box, index) => {
-          return <Box key={index} />;
+          return (
+            <Box
+              key={index}
+              single={index % 2 === 0}
+              multiple={index % 2 !== 0}
+            />
+          );
         })}
       </Container>
     </>

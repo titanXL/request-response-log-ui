@@ -66,12 +66,22 @@ const Overlay = styled.div`
 
 const LoadingOverlay = ({ children }) => <Overlay>{children}</Overlay>;
 
-export default () => {
+export default ({ single, multiple }) => {
   const [url, setUrl] = useState("");
   const [method, setMethod] = useState("GET");
-  const [response, setResponse] = useState({});
+
+  const [response, setResponse] = useState();
   const [requestBody, setRequestBody] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleSetResponse = response => {
+    console.log(response);
+    if (single) {
+      setResponse(response);
+    } else if (multiple) {
+      setResponse((prevResponses = []) => [...prevResponses, ...response.data]);
+    }
+  };
 
   const fetchResource = () => {
     const data = JSON.stringify(requestBody);
@@ -82,7 +92,7 @@ export default () => {
       data
     })
       .then(response => {
-        setResponse(response);
+        handleSetResponse(response);
         setLoading(false);
       })
       .catch(e => {
@@ -126,7 +136,7 @@ export default () => {
         </Fab>
       </BoxHeader>
       <TextAreaContainer>
-        Request Body
+        Request Body {single ? "SINGLE" : "MULTIPLE"}
         <textarea
           value={requestBody}
           onChange={handleSetRequestBody}
