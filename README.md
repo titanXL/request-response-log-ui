@@ -1,3 +1,7 @@
+Simple UI Response Logger build for a friend to use, instead of multiple console open
+
+Can pick a method between GET|POST|PATCH an URL and some request body parameters
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
