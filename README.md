@@ -1,4 +1,4 @@
-Simple UI Response Logger build for a friend to use, instead of multiple console open
+Simple UI Response Logger build for a friend to use, instead of multiple consoles open
 
 Can pick a method between GET|POST|PATCH an URL and some request body parameters
 
